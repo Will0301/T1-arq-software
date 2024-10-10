@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteEntity {
+public class AplicativoEntity {
     private long codigo;
     private String nome;
-    private String email;
+    private Double custo;
 }

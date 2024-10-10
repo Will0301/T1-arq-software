@@ -5,9 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlanoEntity {
+public class PagamentoEntity {
+    private Long id;
+    private String cupom;
+    private BigDecimal valorPago;
+    private LocalDate dataPagamento;
 }

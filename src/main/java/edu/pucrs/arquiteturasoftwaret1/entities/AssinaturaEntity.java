@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteEntity {
+public class AssinaturaEntity {
     private long codigo;
-    private String nome;
-    private String email;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 }
