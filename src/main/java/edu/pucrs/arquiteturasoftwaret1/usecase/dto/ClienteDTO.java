@@ -1,18 +1,16 @@
-package edu.pucrs.arquiteturasoftwaret1.entities;
+package edu.pucrs.arquiteturasoftwaret1.usecase.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AssinaturaEntity {
+public class ClienteDTO {
     private long codigo;
-    private LocalDate dataInicio;
-    private LocalDate dataFim;
+    private String nome;
+    private String email;
 }

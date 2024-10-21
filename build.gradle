@@ -24,11 +24,21 @@ repositories {
 }
 
 dependencies {
+
+	//SPRING and SPRING DATA
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.data:spring-data-jpa:3.3.4'
+
+	//LOMBOK
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	//TEST
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	//DATABASE
+	runtimeOnly 'org.postgresql:postgresql'
 }
 
 tasks.named('test') {
