@@ -35,4 +35,11 @@ public class AplicativoService {
     public List<AplicativoEntity> listarBy(String filter) {
         return List.of(AplicativoEntity.builder().build());
     }
+
+    public AplicativoEntity atualizarCusto(Long idAplicativo, Double novoCusto) throws BadRequestException {
+        AplicativoEntity app = aplicativosRepository.findById(idAplicativo)
+            .orElseThrow(() -> new BadRequestException("Aplicativo não encontrado."));
+        app.setCusto(novoCusto);
+        return aplicativosRepository.save(app);
+    }
 }

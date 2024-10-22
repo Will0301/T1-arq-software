@@ -31,4 +31,10 @@ public class AppControler {
     public ResponseEntity<List<AplicativoEntity>> ListarAplicativos(){
         return ResponseEntity.ok(aplicativoService.listarApps());
     }
+
+    @PostMapping("/atualizacusto/{idAplicativo}")
+    public ResponseEntity<AplicativoEntity> atualizarCusto(@PathVariable Long idAplicativo, @RequestBody Double novoCusto) {
+        AplicativoEntity app = aplicativoService.atualizarCusto(idAplicativo, novoCusto);
+        return ResponseEntity.ok(app);
+    }
 }
