@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.domain.entities;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,18 +8,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AssinaturaEntity {
+public class AplicativoEntity {
     @Id
     private long codigo;
     @Column
-    private LocalDate dataInicio;
+    private String nome;
     @Column
-    private LocalDate dataFim;
+    private Double custo;
 }

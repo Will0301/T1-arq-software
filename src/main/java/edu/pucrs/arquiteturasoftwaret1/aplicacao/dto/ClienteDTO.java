@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.usecase.dto;
+package edu.pucrs.arquiteturasoftwaret1.aplicacao.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AplicativoDTO {
-
+public class ClienteDTO {
     private long codigo;
     private String nome;
-    private Double custo;
+    private String email;
 }
