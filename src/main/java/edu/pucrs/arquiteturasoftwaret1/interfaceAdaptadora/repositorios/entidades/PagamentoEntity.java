@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.domain.entities;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,16 +8,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteEntity {
+public class PagamentoEntity {
     @Id
-    private long codigo;
+    private Long id;
     @Column
-    private String nome;
+    private String cupom;
     @Column
-    private String email;
+    private BigDecimal valorPago;
+    @Column
+    private LocalDate dataPagamento;
 }

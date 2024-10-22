@@ -1,7 +1,7 @@
-package edu.pucrs.arquiteturasoftwaret1.usecase;
+package edu.pucrs.arquiteturasoftwaret1.domain.servicos;
 
-import edu.pucrs.arquiteturasoftwaret1.domain.entities.ClienteEntity;
-import edu.pucrs.arquiteturasoftwaret1.domain.repository.ClienteRepository;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.ClienteEntity;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.interfaceJPA.ClienteRepository_ItfRep;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
@@ -10,16 +10,16 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    private ClienteRepository clienteRepository;
+    private ClienteRepository_ItfRep clienteRepositoryItfRep;
 
     public void cadastrarCliente(ClienteEntity aplicativo) {
-        clienteRepository.save(aplicativo);
+        clienteRepositoryItfRep.save(aplicativo);
     }
 
     public void editarCliente(ClienteEntity cliente) throws BadRequestException {
-        clienteRepository.findById(cliente.getCodigo())
+        clienteRepositoryItfRep.findById(cliente.getCodigo())
                 .orElseThrow(() ->  new BadRequestException("Cliente não cadastrado"));
-        clienteRepository.save(cliente);
+        clienteRepositoryItfRep.save(cliente);
     }
 
     public List<ClienteEntity> listarClientes() {

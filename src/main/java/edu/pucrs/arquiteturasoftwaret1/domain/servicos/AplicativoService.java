@@ -1,7 +1,7 @@
-package edu.pucrs.arquiteturasoftwaret1.usecase;
+package edu.pucrs.arquiteturasoftwaret1.domain.servicos;
 
-import edu.pucrs.arquiteturasoftwaret1.domain.entities.AplicativoEntity;
-import edu.pucrs.arquiteturasoftwaret1.domain.repository.AplicativosRepository;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AplicativoEntity;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.interfaceJPA.AplicativosRepository_ItfRep;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AplicativoService {
 
-    private AplicativosRepository aplicativosRepository;
+    private AplicativosRepository_ItfRep aplicativosRepositoryItfRep;
 
     public void cadastrarApp(AplicativoEntity aplicativo) {
-        aplicativosRepository.save(aplicativo);
+        aplicativosRepositoryItfRep.save(aplicativo);
     }
 
     public void editarApp(AplicativoEntity aplicativo) throws BadRequestException {
-        final var oldApp = aplicativosRepository.findById(aplicativo.getCodigo()).orElse(null);
+        final var oldApp = aplicativosRepositoryItfRep.findById(aplicativo.getCodigo()).orElse(null);
         if (oldApp != null) {
-            aplicativosRepository.save(aplicativo);
+            aplicativosRepositoryItfRep.save(aplicativo);
         }
         else throw new BadRequestException("Aplicativo não existe");
     }
 
     public List<AplicativoEntity> listarApps() {
-        final var appLists = aplicativosRepository.findAll();
+        final var appLists = aplicativosRepositoryItfRep.findAll();
         if (appLists.isEmpty()) return List.of(AplicativoEntity.builder().build());
         return appLists;
     }
@@ -37,9 +37,9 @@ public class AplicativoService {
     }
 
     public AplicativoEntity atualizarCusto(Long idAplicativo, Double novoCusto) throws BadRequestException {
-        AplicativoEntity app = aplicativosRepository.findById(idAplicativo)
+        AplicativoEntity app = aplicativosRepositoryItfRep.findById(idAplicativo)
             .orElseThrow(() -> new BadRequestException("Aplicativo não encontrado."));
         app.setCusto(novoCusto);
-        return aplicativosRepository.save(app);
+        return aplicativosRepositoryItfRep.save(app);
     }
 }

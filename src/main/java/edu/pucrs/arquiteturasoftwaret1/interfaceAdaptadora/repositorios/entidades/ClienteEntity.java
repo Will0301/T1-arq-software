@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.domain.entities;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AplicativoEntity {
+public class ClienteEntity {
     @Id
     private long codigo;
     @Column
     private String nome;
     @Column
-    private Double custo;
+    private String email;
 }

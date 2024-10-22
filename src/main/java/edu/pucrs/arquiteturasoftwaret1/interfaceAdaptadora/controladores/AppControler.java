@@ -1,7 +1,7 @@
-package edu.pucrs.arquiteturasoftwaret1.contract;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
-import edu.pucrs.arquiteturasoftwaret1.domain.entities.AplicativoEntity;
-import edu.pucrs.arquiteturasoftwaret1.usecase.AplicativoService;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AplicativoEntity;
+import edu.pucrs.arquiteturasoftwaret1.domain.servicos.AplicativoService;
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

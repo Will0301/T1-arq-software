@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.domain.entities;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -16,13 +15,11 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PagamentoEntity {
+public class AssinaturaEntity {
     @Id
-    private Long id;
+    private long codigo;
     @Column
-    private String cupom;
+    private LocalDate dataInicio;
     @Column
-    private BigDecimal valorPago;
-    @Column
-    private LocalDate dataPagamento;
+    private LocalDate dataFim;
 }

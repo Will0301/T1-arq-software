@@ -1,7 +1,7 @@
-package edu.pucrs.arquiteturasoftwaret1.contract;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
-import edu.pucrs.arquiteturasoftwaret1.domain.entities.PagamentoEntity;
-import edu.pucrs.arquiteturasoftwaret1.usecase.PagamentoService;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.PagamentoEntity;
+import edu.pucrs.arquiteturasoftwaret1.domain.servicos.PagamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

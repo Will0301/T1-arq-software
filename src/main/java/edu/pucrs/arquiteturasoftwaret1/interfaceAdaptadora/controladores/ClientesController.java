@@ -1,7 +1,7 @@
-package edu.pucrs.arquiteturasoftwaret1.contract;
+package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
-import edu.pucrs.arquiteturasoftwaret1.domain.entities.ClienteEntity;
-import edu.pucrs.arquiteturasoftwaret1.usecase.ClienteService;
+import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.ClienteEntity;
+import edu.pucrs.arquiteturasoftwaret1.domain.servicos.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
