@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @Primary
@@ -34,11 +35,15 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
     }
 
     public List<AssinaturaEntity> listarAssinaturasPorCliente(Long codcli) {
-        return assinaturaRepositoryItfRep.findByClienteCodigo(codcli);
+        return assinaturaRepositoryItfRep.findAll().stream()
+                .filter(a -> Objects.equals(a.getCodigoCliente(), codcli))
+                .toList();
     }
 
     public List<AssinaturaEntity> listarAssinaturasPorAplicativo(Long codapp) {
-        return assinaturaRepositoryItfRep.findByAplicativoCodigo(codapp);
+        return assinaturaRepositoryItfRep.findAll().stream()
+                .filter(a -> Objects.equals(a.getCodigoAplicativo(), codapp))
+                .toList();
     }
 
     public boolean verificarAssinaturaValida(Long codass) throws BadRequestException {

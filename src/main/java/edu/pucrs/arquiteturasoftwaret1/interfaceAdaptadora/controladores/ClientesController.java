@@ -1,5 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.ClienteDTO;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.ClienteEntity;
 import edu.pucrs.arquiteturasoftwaret1.domain.servicos.ClienteService;
 import lombok.RequiredArgsConstructor;
@@ -19,18 +20,18 @@ public class ClientesController {
 
     @PostMapping("/cadastrar")
     @ResponseStatus(HttpStatus.CREATED)
-    public void cadastrarCliente(@RequestBody ClienteEntity aplicativoEntity){
+    public void cadastrarCliente(@RequestBody ClienteDTO aplicativoEntity){
         clienteService.cadastrarCliente(aplicativoEntity);
     }
 
     @PostMapping("/editar")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editarDadosCliente(@RequestBody ClienteEntity aplicativoEntity) throws BadRequestException {
+    public void editarDadosCliente(@RequestBody ClienteDTO aplicativoEntity) throws BadRequestException {
         clienteService.editarCliente(aplicativoEntity);
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<ClienteEntity>> ListarClientes(){
+    public ResponseEntity<List<ClienteDTO>> ListarClientes(){
         return ResponseEntity.ok(clienteService.listarClientes());
     }
 }
