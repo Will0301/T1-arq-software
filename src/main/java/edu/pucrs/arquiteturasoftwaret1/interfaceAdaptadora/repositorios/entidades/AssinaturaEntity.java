@@ -1,9 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +23,13 @@ public class AssinaturaEntity {
     @Column
     private LocalDate dataFim;
 
-    @ElementCollection
-    @Builder.Default
-    private List<String> appsCodes = new ArrayList<>();
+    @Column
+    private Long codigoCliente;
+
+    @Column
+    private Long codigoAplicativo;
+
+    @ManyToOne
+    @JoinColumn(name = "pagamento_id")
+    private PagamentoEntity pagamento;
 }

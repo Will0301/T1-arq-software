@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @Builder
@@ -19,12 +21,8 @@ public class ClienteEntity {
     @Column
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "pagamento_id")
-    private PagamentoEntity pagamento;
-
-    @ManyToOne
-    @JoinColumn(name = "assinatura_id")
-    private AssinaturaEntity assinatura;
+    @ElementCollection
+    @Builder.Default
+    private List<Long> assinatura;
 
 }

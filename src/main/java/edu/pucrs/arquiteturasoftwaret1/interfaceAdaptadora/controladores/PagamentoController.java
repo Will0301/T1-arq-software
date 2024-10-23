@@ -1,5 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.PagamentoDTO;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.PagamentoEntity;
 import edu.pucrs.arquiteturasoftwaret1.domain.servicos.PagamentoService;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ public class PagamentoController {
 
     @PostMapping("/registrarpagamento")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<PagamentoEntity> registrarPagamento(@RequestBody PagamentoEntity pagamento) {
-        PagamentoEntity novoPagamento = pagamentoService.registrarPagamento(pagamento);
+    public ResponseEntity<PagamentoDTO> registrarPagamento(@RequestBody PagamentoEntity pagamento) {
+        PagamentoDTO novoPagamento = pagamentoService.registrarPagamento(pagamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoPagamento);
     }
 }

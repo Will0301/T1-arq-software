@@ -1,5 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.AplicativoDTO;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AplicativoEntity;
 import edu.pucrs.arquiteturasoftwaret1.domain.servicos.AplicativoService;
 import org.apache.coyote.BadRequestException;
@@ -17,7 +18,7 @@ public class AppControler {
 
     @PostMapping("/cadastrar")
     @ResponseStatus(HttpStatus.CREATED)
-    public void cadastraAplicativo(@RequestBody AplicativoEntity app){
+    public void cadastraAplicativo(@RequestBody AplicativoDTO app){
         aplicativoService.cadastrarApp(app);
     }
 
@@ -28,13 +29,13 @@ public class AppControler {
 //    }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<AplicativoEntity>> ListarAplicativos(){
+    public ResponseEntity<List<AplicativoDTO>> ListarAplicativos(){
         return ResponseEntity.ok(aplicativoService.listarApps());
     }
 
     @PostMapping("/atualizacusto/{idAplicativo}")
-    public ResponseEntity<AplicativoEntity> atualizarCusto(@PathVariable Long idAplicativo, @RequestBody Double novoCusto) {
-        AplicativoEntity app = aplicativoService.atualizarCusto(idAplicativo, novoCusto);
+    public ResponseEntity<AplicativoDTO> atualizarCusto(@PathVariable Long idAplicativo, @RequestBody Double novoCusto) {
+        AplicativoDTO app = aplicativoService.atualizarCusto(idAplicativo, novoCusto);
         return ResponseEntity.ok(app);
     }
 }
