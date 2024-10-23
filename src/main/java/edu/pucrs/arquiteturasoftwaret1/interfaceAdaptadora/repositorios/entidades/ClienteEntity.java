@@ -1,8 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +18,13 @@ public class ClienteEntity {
     private String nome;
     @Column
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "pagamento_id")
+    private PagamentoEntity pagamento;
+
+    @ManyToOne
+    @JoinColumn(name = "assinatura_id")
+    private AssinaturaEntity assinatura;
+
 }

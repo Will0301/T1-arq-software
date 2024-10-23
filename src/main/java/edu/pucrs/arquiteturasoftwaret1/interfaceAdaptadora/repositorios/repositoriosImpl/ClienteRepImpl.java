@@ -3,7 +3,6 @@ package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.reposit
 import edu.pucrs.arquiteturasoftwaret1.domain.repository.IClienteRepository;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.ClienteEntity;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.interfaceJPA.ClienteRepository_ItfRep;
-import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
