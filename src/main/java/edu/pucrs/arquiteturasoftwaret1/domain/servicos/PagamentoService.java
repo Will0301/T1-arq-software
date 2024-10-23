@@ -21,7 +21,7 @@ public class PagamentoService {
         AssinaturaEntity assinatura = assinaturaRepositoryItfRep.findById(pagamento.getAssinatura().getCodigo())
                 .orElseThrow(() -> new BadRequestException("Assinatura não encontrada"));
 
-        if (pagamento.getValorPago().compareTo(assinatura.getAplicativo().getCusto()) >= 0) {
+        if (pagamento.getValorPago().compareTo(assinatura.getCusto()) >= 0) {
             assinatura.setDataFim(assinatura.getDataFim().plusDays(30)); 
         }
 
