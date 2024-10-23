@@ -21,11 +21,11 @@ public class AppControler {
         aplicativoService.cadastrarApp(app);
     }
 
-    @PostMapping("/editar")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editarAplicativo(@RequestBody AplicativoEntity app) throws BadRequestException {
-        aplicativoService.editarApp(app);
-    }
+//    @PostMapping("/editar")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void editarAplicativo(@RequestBody AplicativoEntity app) throws BadRequestException {
+//        aplicativoService.(app);
+//    }
 
     @GetMapping("/listar")
     public ResponseEntity<List<AplicativoEntity>> ListarAplicativos(){

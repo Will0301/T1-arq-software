@@ -27,7 +27,8 @@ dependencies {
 
 	//SPRING and SPRING DATA
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.data:spring-data-jpa'
+	implementation 'org.springframework.data:spring-data-jpa:3.3.5'
+	implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0'
 
 	//LOMBOK
 	compileOnly 'org.projectlombok:lombok'
