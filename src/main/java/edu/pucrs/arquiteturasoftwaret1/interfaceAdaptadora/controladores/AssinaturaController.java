@@ -1,9 +1,12 @@
 package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.controladores;
 
 import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.AssinaturaDTO;
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.usecase.ClienteUC;
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.usecase.EfetuarAssinatura;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AssinaturaEntity;
 import edu.pucrs.arquiteturasoftwaret1.domain.servicos.AssinaturaService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,36 +19,35 @@ import java.util.List;
 @RequestMapping("/servcad")
 public class AssinaturaController {
 
-    private final AssinaturaService assinaturaService;
+    private final ClienteUC clienteUC;
 
-    @PostMapping("/assinaturas")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<AssinaturaDTO> criarAssinatura(@RequestBody AssinaturaDTO assinatura) {
-        AssinaturaEntity novaAssinatura = assinaturaService.criarAssinatura(assinatura);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaAssinatura);
-    }
+//    @PostMapping("/assinaturas")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public ResponseEntity<AssinaturaDTO> criarAssinatura(@RequestBody AssinaturaDTO assinatura) {
+//    AssinaturaEntity novaAssinatura = assinaturaService.criarAssinatura(assinatura);
+//    }
 
     @GetMapping("/assinaturas/{tipo}")
     public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorTipo(@PathVariable String tipo) {
-        List<AssinaturaDTO> assinaturas = assinaturaService.listarAssinaturasPorTipo(tipo);
+        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturasPorStatus(tipo);
         return ResponseEntity.ok(assinaturas);
     }
 
     @GetMapping("/asscli/{codcli}")
-    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorCliente(@PathVariable Long codcli) {
-        List<AssinaturaDTO> assinaturas = assinaturaService.listarAssinaturasPorCliente(codcli);
+    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorCliente(@PathVariable Long codcli) throws BadRequestException {
+        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturas(codcli);
         return ResponseEntity.ok(assinaturas);
     }
 
     @GetMapping("/assapp/{codapp}")
     public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorAplicativo(@PathVariable Long codapp) {
-        List<AssinaturaDTO> assinaturas = assinaturaService.listarAssinaturasPorAplicativo(codapp);
+        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturasPorAplicativo(codapp);
         return ResponseEntity.ok(assinaturas);
     }
 
-    @GetMapping("/assinvalida/{codass}")
-    public ResponseEntity<Boolean> verificarAssinaturaValida(@PathVariable Long codass) {
-        boolean isValida = assinaturaService.verificarAssinaturaValida(codass);
-        return ResponseEntity.ok(isValida);
-    }
+//    @GetMapping("/assinvalida/{codass}")
+//    public ResponseEntity<Boolean> verificarAssinaturaValida(@PathVariable Long codass) {
+//        boolean isValida = clienteUC.verificarAssinaturaValida(codass);
+//        return ResponseEntity.ok(isValida);
+//    }
 }

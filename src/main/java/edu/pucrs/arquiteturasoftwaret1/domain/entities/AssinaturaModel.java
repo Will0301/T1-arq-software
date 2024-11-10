@@ -1,9 +1,6 @@
-package edu.pucrs.arquiteturasoftwaret1.aplicacao.dto;
+package edu.pucrs.arquiteturasoftwaret1.domain.entities;
 
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.PagamentoEntity;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +14,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AssinaturaDTO {
+public class AssinaturaModel {
     private long codigo;
     private LocalDate dataInicio;
     private LocalDate dataFim;
+    private List<String> appsCodes = new ArrayList<>();
+    private PagamentoEntity pagamento;
 }

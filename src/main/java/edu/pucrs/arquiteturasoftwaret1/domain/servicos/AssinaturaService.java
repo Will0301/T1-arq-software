@@ -1,5 +1,6 @@
 package edu.pucrs.arquiteturasoftwaret1.domain.servicos;
 
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.AssinaturaDTO;
 import edu.pucrs.arquiteturasoftwaret1.domain.repository.IAssinaturaRepository;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AssinaturaEntity;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class AssinaturaService {
 
     private final IAssinaturaRepository assinaturaRepository;
 
-    public AssinaturaEntity criarAssinatura(AssinaturaEntity assinatura) {
+    public AssinaturaEntity criarAssinatura(AssinaturaDTO assinatura) {
         return assinaturaRepository.criarAssinatura(assinatura);
     }
 

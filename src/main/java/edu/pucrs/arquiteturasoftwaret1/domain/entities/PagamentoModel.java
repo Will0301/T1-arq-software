@@ -1,4 +1,4 @@
-package edu.pucrs.arquiteturasoftwaret1.aplicacao.dto;
+package edu.pucrs.arquiteturasoftwaret1.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,10 +12,9 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PagamentoDTO {
+public class PagamentoModel {
     private Long id;
     private String cupom;
     private BigDecimal valorPago;
     private LocalDate dataPagamento;
-    private long codAssinatura;
 }
