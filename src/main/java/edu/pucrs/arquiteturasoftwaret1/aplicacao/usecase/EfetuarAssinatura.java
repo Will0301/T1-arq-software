@@ -16,10 +16,10 @@ public class EfetuarAssinatura {
     PagamentoService pagamentoService;
     AplicativoService aplicativoService;
 
-    public AssinaturaService getAssinaturaService(String clientId, String codApp, PagamentoDTO pagamento) {
+    public AssinaturaDTO getAssinaturaService(String clientId, String codApp, PagamentoDTO pagamento) {
         final var cliente = clienteService.listarBy(clientId);
         final var app = aplicativoService.listarBy(codApp);
         AssinaturaDTO assinaturaDTO = new AssinaturaDTO();
-
+        return assinaturaDTO;
     }
 }

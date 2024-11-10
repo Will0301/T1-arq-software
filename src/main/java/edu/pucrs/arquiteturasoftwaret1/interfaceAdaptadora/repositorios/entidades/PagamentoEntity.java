@@ -25,4 +25,6 @@ public class PagamentoEntity {
     private BigDecimal valorPago;
     @Column
     private LocalDate dataPagamento;
+    @Column
+    private long codAssinatura;
 }

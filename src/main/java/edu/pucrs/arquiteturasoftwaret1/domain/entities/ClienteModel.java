@@ -1,23 +1,16 @@
-package edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades;
+package edu.pucrs.arquiteturasoftwaret1.domain.entities;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteEntity {
-    @Id
+public class ClienteModel {
     private long codigo;
-    @Column
     private String nome;
-    @Column
     private String email;
 }

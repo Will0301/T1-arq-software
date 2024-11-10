@@ -22,14 +22,4 @@ public class AssinaturaEntity {
     private LocalDate dataInicio;
     @Column
     private LocalDate dataFim;
-
-    @Column
-    private Long codigoCliente;
-
-    @Column
-    private Long codigoAplicativo;
-
-    @ManyToOne
-    @JoinColumn(name = "pagamento_id")
-    private PagamentoEntity pagamento;
 }
