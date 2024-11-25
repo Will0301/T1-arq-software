@@ -2,6 +2,7 @@ package edu.pucrs.arquiteturasoftwaret1.domain.servicos;
 
 import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.AssinaturaDTO;
 import edu.pucrs.arquiteturasoftwaret1.domain.repository.IAssinaturaRepository;
+import edu.pucrs.arquiteturasoftwaret1.domain.servicos.mapper.AssinaturaMapper;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AssinaturaEntity;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
@@ -15,20 +16,30 @@ public class AssinaturaService {
 
     private final IAssinaturaRepository assinaturaRepository;
 
-    public AssinaturaEntity criarAssinatura(AssinaturaDTO assinatura) {
-        return assinaturaRepository.criarAssinatura(assinatura);
+    public AssinaturaDTO criarAssinatura(AssinaturaDTO assinatura) {
+        final var entity = AssinaturaMapper.mapToEntity(assinatura);
+        return AssinaturaMapper.mapToDTO(assinaturaRepository.criarAssinatura(entity));
     }
 
-    public List<AssinaturaEntity> listarAssinaturasPorTipo(String tipo) {
-        return assinaturaRepository.listarAssinaturasPorTipo(tipo);
+    public List<AssinaturaDTO> listarAssinaturasPorTipo(String tipo) {
+        return assinaturaRepository.listarAssinaturasPorTipo(tipo)
+                .stream()
+                .map(AssinaturaMapper::mapToDTO)
+                .toList();
     }
 
-    public List<AssinaturaEntity> listarAssinaturasPorCliente(Long codcli) {
-        return assinaturaRepository.listarAssinaturasPorCliente(codcli);
+    public List<AssinaturaDTO> listarAssinaturasPorCliente(Long codcli) {
+        return assinaturaRepository.listarAssinaturasPorCliente(codcli)
+                .stream()
+                .map(AssinaturaMapper::mapToDTO)
+                .toList();
     }
 
-    public List<AssinaturaEntity> listarAssinaturasPorAplicativo(Long codapp) {
-        return assinaturaRepository.listarAssinaturasPorAplicativo(codapp);
+    public List<AssinaturaDTO> listarAssinaturasPorAplicativo(Long codapp) {
+        return assinaturaRepository.listarAssinaturasPorAplicativo(codapp)
+                .stream()
+                .map(AssinaturaMapper::mapToDTO)
+                .toList();
     }
 
     public boolean verificarAssinaturaValida(Long codass) throws BadRequestException {

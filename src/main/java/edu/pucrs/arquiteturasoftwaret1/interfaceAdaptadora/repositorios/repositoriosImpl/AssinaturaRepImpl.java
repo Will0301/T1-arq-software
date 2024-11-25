@@ -36,14 +36,13 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
 
     public List<AssinaturaEntity> listarAssinaturasPorCliente(Long codcli) {
         return assinaturaRepositoryItfRep.findAll().stream()
-                .filter(a -> Objects.equals(a.getCodigoCliente(), codcli))
+                .filter(a -> Objects.equals(a.getCodigo(), codcli))
                 .toList();
     }
 
+    @Override
     public List<AssinaturaEntity> listarAssinaturasPorAplicativo(Long codapp) {
-        return assinaturaRepositoryItfRep.findAll().stream()
-                .filter(a -> Objects.equals(a.getCodigoAplicativo(), codapp))
-                .toList();
+        return List.of();
     }
 
     public boolean verificarAssinaturaValida(Long codass) throws BadRequestException {
