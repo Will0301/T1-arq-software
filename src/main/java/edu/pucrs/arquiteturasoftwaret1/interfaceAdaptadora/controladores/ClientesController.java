@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@Controller("/servcad/cliente")
 @RequiredArgsConstructor
 public class ClientesController {
 
     private ClienteService clienteService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarCliente(@RequestBody ClienteDTO aplicativoEntity){
         clienteService.cadastrarCliente(aplicativoEntity);
     }
 
-    @PostMapping("/editar")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editarDadosCliente(@RequestBody ClienteDTO aplicativoEntity) throws BadRequestException {
-        clienteService.editarCliente(aplicativoEntity);
-    }
-
-    @GetMapping("/listar")
+    @GetMapping()
     public ResponseEntity<List<ClienteDTO>> ListarClientes(){
         return ResponseEntity.ok(clienteService.listarClientes());
     }
+
+    @DeleteMapping
+    public void excluirCliente(@RequestParam long codCliente){
+
+    }
+
 }

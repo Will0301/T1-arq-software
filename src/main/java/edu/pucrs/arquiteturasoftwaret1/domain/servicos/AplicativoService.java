@@ -1,6 +1,8 @@
 package edu.pucrs.arquiteturasoftwaret1.domain.servicos;
 
+import edu.pucrs.arquiteturasoftwaret1.aplicacao.dto.AplicativoDTO;
 import edu.pucrs.arquiteturasoftwaret1.domain.repository.IAplicativoRepository;
+import edu.pucrs.arquiteturasoftwaret1.domain.servicos.mapper.AplicativoMapper;
 import edu.pucrs.arquiteturasoftwaret1.interfaceAdaptadora.repositorios.entidades.AplicativoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,19 +15,26 @@ public class AplicativoService {
 
     private IAplicativoRepository aplicativosRepository;
 
-    public void cadastrarApp(AplicativoEntity aplicativo) {
-        aplicativosRepository.cadastrarApp(aplicativo);
+    public void cadastrarApp(AplicativoDTO aplicativo) {
+        final var entity = AplicativoMapper.mapToEntity(aplicativo);
+        aplicativosRepository.cadastrarApp(entity);
     }
 
-    public List<AplicativoEntity> listarApps() {
-        return aplicativosRepository.listarApps();
+    public List<AplicativoDTO> listarApps() {
+        return aplicativosRepository.listarApps()
+                .stream()
+                .map(AplicativoMapper::mapToDTO)
+                .toList();
     }
 
-    public List<AplicativoEntity> listarBy(String filter) {
-        return aplicativosRepository.listarBy(filter);
+    public List<AplicativoDTO> listarBy(String filter) {
+        return aplicativosRepository.listarBy(filter)
+                .stream()
+                .map(AplicativoMapper::mapToDTO)
+                .toList();
     }
 
-    public AplicativoEntity atualizarCusto(Long idAplicativo, Double novoCusto) {
-        return aplicativosRepository.atualizarCusto(idAplicativo, novoCusto);
+    public AplicativoDTO atualizarCusto(Long idAplicativo, Double novoCusto) {
+        return AplicativoMapper.mapToDTO(aplicativosRepository.atualizarCusto(idAplicativo, novoCusto));
     }
 }

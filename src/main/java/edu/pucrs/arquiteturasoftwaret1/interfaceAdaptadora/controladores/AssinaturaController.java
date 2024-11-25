@@ -21,33 +21,4 @@ public class AssinaturaController {
 
     private final ClienteUC clienteUC;
 
-//    @PostMapping("/assinaturas")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public ResponseEntity<AssinaturaDTO> criarAssinatura(@RequestBody AssinaturaDTO assinatura) {
-//    AssinaturaEntity novaAssinatura = assinaturaService.criarAssinatura(assinatura);
-//    }
-
-    @GetMapping("/assinaturas/{tipo}")
-    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorTipo(@PathVariable String tipo) {
-        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturasPorStatus(tipo);
-        return ResponseEntity.ok(assinaturas);
-    }
-
-    @GetMapping("/asscli/{codcli}")
-    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorCliente(@PathVariable Long codcli) throws BadRequestException {
-        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturas(codcli);
-        return ResponseEntity.ok(assinaturas);
-    }
-
-    @GetMapping("/assapp/{codapp}")
-    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasPorAplicativo(@PathVariable Long codapp) {
-        List<AssinaturaDTO> assinaturas = clienteUC.listarAssinaturasPorAplicativo(codapp);
-        return ResponseEntity.ok(assinaturas);
-    }
-
-//    @GetMapping("/assinvalida/{codass}")
-//    public ResponseEntity<Boolean> verificarAssinaturaValida(@PathVariable Long codass) {
-//        boolean isValida = clienteUC.verificarAssinaturaValida(codass);
-//        return ResponseEntity.ok(isValida);
-//    }
 }

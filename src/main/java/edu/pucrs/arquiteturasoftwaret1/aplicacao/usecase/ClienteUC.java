@@ -23,35 +23,14 @@ public class ClienteUC {
                 .findFirst()
                 .orElseThrow(() -> new BadRequestException("Cliente não existe"));
 
-        final var assinaturas = assinaturaService.listarAssinaturasPorCliente(codCliente)
-                .stream()
-                .map(this::buildAssinatura)
-                .toList();
-
-        return assinaturas;
+        return assinaturaService.listarAssinaturasPorCliente(codCliente);
     }
 
     public List<AssinaturaDTO> listarAssinaturasPorStatus(String status)  {
-        return assinaturaService.listarAssinaturasPorTipo(status)
-                .stream()
-                .map(this::buildAssinatura)
-                .toList();
+        return assinaturaService.listarAssinaturasPorTipo(status);
     }
 
     public List<AssinaturaDTO> listarAssinaturasPorAplicativo(long appId)  {
-        return assinaturaService.listarAssinaturasPorAplicativo(appId)
-                .stream()
-                .map(this::buildAssinatura)
-                .toList();
-    }
-
-    private AssinaturaDTO buildAssinatura(AssinaturaEntity assinaturaEntity) {
-        return AssinaturaDTO.builder()
-                .appsCodes(List.of(assinaturaEntity.getCodigoAplicativo().toString()))
-                .codigo(assinaturaEntity.getCodigo())
-                .dataFim(assinaturaEntity.getDataFim())
-                .dataInicio(assinaturaEntity.getDataInicio())
-                .pagamento(assinaturaEntity.getPagamento())
-                .build();
+        return assinaturaService.listarAssinaturasPorAplicativo(appId);
     }
 }
