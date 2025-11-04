@@ -27,5 +27,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/t1-arq-software:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/arq-software:latest
 
