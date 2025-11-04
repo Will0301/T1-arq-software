@@ -1,1 +1,7 @@
-# outputs defined in main.tf
+output "ec2_public_ip" {
+  value = aws_instance.api_server.public_ip
+}
+
+output "api_url" {
+  value = "http://${aws_instance.api_server.public_ip}:8080"
+}
